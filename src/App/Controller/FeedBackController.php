@@ -10,9 +10,6 @@ namespace App\Controller;
 
 use App\Form\FeedBackType;
 use App\Repository\FeedBackRepository;
-use Silex\Provider\Routing\RedirectableUrlMatcher;
-use Silex\Tests\Application\UrlGeneratorApplication;
-use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,7 +44,7 @@ class FeedBackController
         $success = false;
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->repo->set($form->getData());
             $success = true;
         }
@@ -63,7 +60,7 @@ class FeedBackController
     {
         $feedback = $this->repo->find($id);
         return $this->template->render('feedback/show.html.twig', array(
-            'feedback' => $feedback
+            'feedback' => $feedback,
         ));
     }
 
@@ -73,11 +70,10 @@ class FeedBackController
         $success = false;
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->repo->set($form->getData());
             $success = true;
         }
-
 
         return $this->template->render('feedback/edit.html.twig', array(
             'form' => $form->createView(),
@@ -92,6 +88,7 @@ class FeedBackController
 
     public function destroy($id)
     {
+
         // delete the user #id, using DELETE method
         $this->repo->del($id);
         return new RedirectResponse($this->urlGenerator->generate("list_feedback"));
