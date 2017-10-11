@@ -1,0 +1,18 @@
+/vendor/
+/.idea
+
+Будет удалено .gitignore
+Будет удалено .idea/
+Будет удалено LICENSE
+Будет удалено README.rst
+Будет удалено bin/
+Будет удалено composer.json
+Будет удалено composer.lock
+Будет удалено config/
+Будет удалено phpunit.xml.dist
+Будет удалено src/
+Будет удалено templates/
+Будет удалено tests/
+Будет удалено var/cache/.gitignore
+Будет удалено var/logs/.gitignore
+Будет удалено web/

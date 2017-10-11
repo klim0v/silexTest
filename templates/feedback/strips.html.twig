@@ -1,0 +1,14 @@
+<h1>Список отзывов</h1>
+<ul>
+    {% for feedback in data %}
+        <li>
+            {{ feedback.title }}
+            <ul>
+                <li><a href="{{ path('edit_feedback', { 'id': feedback.id }) }}">edit</a></li>
+                <li><a href="{{ path('delete_feedback', { 'id': feedback.id }) }}">delete</a></li>
+                <li><a href="{{ path('show_feedback', { 'id': feedback.id }) }}">show</a></li>
+            </ul>
+        </li>
+    {% endfor %}
+    <a href="{{ path('new_feedback') }}">Create new Feed Back</a>
+</ul>

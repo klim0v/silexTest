@@ -1,0 +1,8 @@
+<h1>{{ feedback.title }}</h1>
+<ul>
+            <ul>
+                <li><a href="{{ path('edit_feedback', { 'id': feedback.id }) }}">edit</a></li>
+                <li><a href="{{ path('delete_feedback', { 'id': feedback.id }) }}">delete</a></li>
+                <li><a href="{{ path('list_feedback') }}">show all</a></li>
+            </ul>
+</ul>

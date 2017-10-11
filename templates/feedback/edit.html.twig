@@ -1,0 +1,9 @@
+<h1>Edit</h1>
+{% if success is not empty %}
+    <p>Success!</p>
+{% endif %}
+<form action="#" method="post">
+    {{ form_widget(form) }}
+
+    <input type="submit" name="submit" />
+</form>
