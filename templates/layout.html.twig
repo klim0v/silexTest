@@ -18,6 +18,11 @@
         </script>
     </head>
     <body>
+        {% for alert in app.session.flashbag.get('success') %}
+            <div class="error-message">
+                <div class="alert"><strong>{{ alert }}</strong></div>
+            </div>
+        {% endfor %}
         {% block content %}{% endblock %}
     </body>
 </html>

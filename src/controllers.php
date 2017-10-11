@@ -2,9 +2,6 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
@@ -20,7 +17,7 @@ $app['feedback.repository'] = function () use ($app) {
 };
 
 $app['feedback.controller'] = function () use ($app) {
-    return new \App\Controller\FeedBackController($app['feedback.repository'], $app['twig'], $app['form.factory'], $app['url_generator']);
+    return new \App\Controller\FeedBackController($app['feedback.repository'], $app['twig'], $app['form.factory'], $app['url_generator'], $app['session']->getFlashBag());
 };
 
 $app->mount("/users", new \App\Controller\Provider\UserProvider());

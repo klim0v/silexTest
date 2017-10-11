@@ -12,7 +12,7 @@ $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
-$app->register(new LocaleServiceProvider());
+
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
@@ -28,9 +28,10 @@ $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
         'password' => 'toor',
     )
 ));
+$app->register(new LocaleServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'translator.domains' => array(),
 ));
-
+$app->register(new Silex\Provider\SessionServiceProvider());
 return $app;

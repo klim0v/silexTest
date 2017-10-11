@@ -49,7 +49,7 @@ class FeedBackProvider implements ControllerProviderInterface
         $feedback->put("/{id}", "feedback.controller:update")
             ->assert('id', '\d+');
 
-        $feedback->get("/del/{id}", "feedback.controller:destroy")
+        $feedback->post("/del/{id}", "feedback.controller:destroy")
             ->assert('id', '\d+')
             ->bind('delete_feedback');
 

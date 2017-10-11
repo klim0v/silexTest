@@ -1,9 +1,8 @@
-<h1>Edit</h1>
-{% if success is not empty %}
-    <p>Success!</p>
-{% endif %}
-<form action="#" method="post">
-    {{ form_widget(form) }}
+{% extends "layout.html.twig" %}
 
-    <input type="submit" name="submit" />
-</form>
+{% block title %}
+    new
+{% endblock %}
+{% block content %}
+        {{ form(feedback_form) }}
+{% endblock %}

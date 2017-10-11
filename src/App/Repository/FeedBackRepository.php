@@ -25,20 +25,20 @@ class FeedBackRepository
     /**
      * @return array
      */
-    public function findAll(): array
+    public function findAll(): ?array
     {
         $sql = "SELECT * FROM feed_back";
-        return $this->db->fetchAll($sql);
+        return $this->db->fetchAll($sql) ? : null;
     }
 
     /**
      * @param int $id
      * @return array
      */
-    public function find(int $id): array
+    public function find(int $id): ?array
     {
         $sql = "SELECT * FROM feed_back WHERE id = ?";
-        return $this->db->fetchAssoc($sql, array((int) $id));
+        return $this->db->fetchAssoc($sql, array((int) $id)) ? : null;
     }
 
     /**
